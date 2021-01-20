@@ -28,4 +28,4 @@ $stmt->execute(array(
 ));
 
 
-header( "refresh:0.2;url=espace_utilisateur.php" );
+header( "Location:espace_utilisateur.php" );

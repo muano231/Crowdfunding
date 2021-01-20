@@ -57,53 +57,60 @@ $resultat = $stmt->fetch();
 
 <?php 
 
-$stmt2 = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id = :id");
-$stmt2->execute(array(
-    'id' => $id));
+$result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id = :id AND DATEDIFF( date_butoir, DATE( NOW() ) )>0 ORDER BY date_butoir ASC");
+$result->execute(array('id' => $id));
+//$nb_lignes = $stmt2->fetch();
 
-$lignes = $stmt2->fetch();
+while($lignes = $result->fetch()){
+    ?>
+    <div class="card mb-3" style="max-width: 1010px;margin-left:150px;margin-top:50px;">
 
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="https://source.unsplash.com/random/300x600">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Modifier mon projet</h5>
+                <form action="espace_utilisateur_update.php" method="post">
 
+                    <label class="form-label" for="projet_nom">Nom du projet :</label>
+                    <input class="form-control" type="text" name="projet_nom" id="projet_nom"
+                        value="<?php echo($lignes['nom_projet']); ?>" />
+
+                    <label class="form-label" for="projet_description">Description du projet</label>
+                    <input class="form-control" type="text" name="projet_description" id="projet_description"
+                        value="<?php echo($lignes['description_projet']); ?>" />
+
+                    <label class="form-label" for="">Date butoire</label>
+                    <input class="form-control" type="text" name="" id=""
+                        value="<?php echo($lignes['date_butoir']); ?>" disabled />
+
+                    <label class="form-label" for="email">Objectif :</label>
+                    <input class="form-control" type="number" name="email" id="email"
+                        value="<?php echo($lignes['objectif']); ?>" disabled />
+
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Modifier" />
+                </form>
+                <br/>
+                <form action="espace_utilisateur_suppression.php" method="post">
+                    <input class="form-control" type="text" name="projet_nom" id="projet_nom"
+                        value="<?php echo($lignes['nom_projet']); ?>" />
+                    <input class="btn btn-danger" type="submit" value="Supprimer le projet" />
+                </form>  
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <?php
+}
 
 
 ?>
 
-<div class="card mb-3" style="max-width: 1010px;margin-left:150px;margin-top:50px;">
 
-<div class="row g-0">
-    <div class="col-md-4">
-        <img src="https://source.unsplash.com/random/300x600">
-    </div>
-    <div class="col-md-8">
-        <div class="card-body">
-            <h5 class="card-title">Modifier mon projet</h5>
-            <form action="espace_utilisateur_update.php" method="post">
-
-                <label class="form-label" for="projet_nom">Nom du projet :</label>
-                <input class="form-control" type="text" name="projet_nom" id="projet_nom"
-                    value="<?php echo($lignes['nom']); ?>" />
-
-                <label class="form-label" for="projet_description">Description du projet</label>
-                <input class="form-control" type="text" name="projet_description" id="projet_description"
-                    value="<?php echo($lignes['description']); ?>" />
-
-                <label class="form-label" for="">Date butoire</label>
-                <input class="form-control" type="text" name="" id=""
-                    value="<?php echo($lignes['date_butoir']); ?>" disabled />
-
-                <label class="form-label" for="email">Objectif :</label>
-                <input class="form-control" type="number" name="email" id="email"
-                    value="<?php echo($lignes['objectif']); ?>" disabled />
-
-                <br>
-                <input class="btn btn-primary" type="submit" value="Modifier" />
-            </form>
-
-        </div>
-    </div>
-</div>
-
-</div>
 
 <?php
 

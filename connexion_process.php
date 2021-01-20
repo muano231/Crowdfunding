@@ -24,7 +24,7 @@ if ($resultat && $isPasswordCorrect){
     $_SESSION['id'] = $resultat['id'];
     $_SESSION['login'] = $login;
     $_SESSION['solde'] = $resultat['solde'];
-    header( "refresh:0.2;url=index.php" );
+    header( "Location:index.php" );
 }else{
     echo '<p class="mb-0">Mauvais identifiant ou mdp,  <a href="connexion.php" class="alert-link">retouner page de connexion</a>.</p>';
 }

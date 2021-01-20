@@ -41,15 +41,22 @@ session_start();
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="deconnexion.php">Se déconnecter</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link" href="projet_creation.php">Créer un projet</a>
                         </li>
+                        <?php
+                        include_once('connexionbdd.php');
+                        $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE id = :id");
+                        $stmt->execute(array(
+                            'id' => $_SESSION['id']));
+
+                        $resultat = $stmt->fetch();
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link">Mon Solde : <?php echo $resultat['solde'] ?>€</a>
+                        </li>
 
                         <li class="nav-item">
-                            <a class="nav-link">Mon Solde : <?php echo $_SESSION['solde'] ?>€</a>
+                            <a class="nav-link" href="deconnexion.php">Se déconnecter</a>
                         </li>
 
                         <?php 
@@ -65,14 +72,6 @@ session_start();
                     
                     };
                     ?>
-
-
-                    
-
-
-
-
-
                 </ul>
             </div>
         </div>
