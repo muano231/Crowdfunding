@@ -34,20 +34,20 @@ $stmt->execute(array(
 */
 
 $stmt = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, login, mot_de_passe, email, date_inscription, solde)
-	VALUES (:nom, :prenom, :login_user, :pass, :email, NOW(), :solde)");
+VALUES (:nom, :prenom, :login_user, :pass, :email, NOW(), :solde)");
 
-	if($stmt->execute(array(
-		':nom'=> $nom,
-        ':prenom'=> $prenom,
-        ':login_user'=> $login,
-        ':email'=> $email,
-        ':pass'=> $password_utilisateur,
-        ':solde'=> 40
-    ))){
-        header( "refresh:0.2;url=index.php" );
-    }else{
-        echo ("une erreur est survenue");
-    }
+if($stmt->execute(array(
+    ':nom'=> $nom,
+    ':prenom'=> $prenom,
+    ':login_user'=> $login,
+    ':email'=> $email,
+    ':pass'=> $password_utilisateur,
+    ':solde'=> 40
+))){
+    header( "refresh:0.2;url=index.php" );
+}else{
+    echo ("une erreur est survenue");
+}
 /*
 ?>
 
