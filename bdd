@@ -1,0 +1,130 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.5
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost:8889
+-- Généré le : mer. 20 jan. 2021 à 18:29
+-- Version du serveur :  5.7.30
+-- Version de PHP : 7.4.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données : `Projet_Crowdfunding`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `don`
+--
+
+CREATE TABLE `don` (
+  `utilisateur_id` int(11) NOT NULL,
+  `projet_id` int(11) NOT NULL,
+  `montant` int(11) NOT NULL,
+  `date_don` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `projet`
+--
+
+CREATE TABLE `projet` (
+  `id` int(11) NOT NULL,
+  `utilisateur_id` int(11) NOT NULL,
+  `nom_projet` varchar(255) NOT NULL,
+  `description_projet` longtext NOT NULL,
+  `date_creation` datetime NOT NULL,
+  `date_butoir` datetime NOT NULL,
+  `objectif` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `date_inscription` datetime NOT NULL,
+  `solde` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `mot_de_passe`, `email`, `date_inscription`, `solde`) VALUES
+(3, 'terras', 'leo', 'Murano123', 'Lacacanisette450', 'leoone42300@gmail.com', '2021-01-20 13:49:51', 40);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `don`
+--
+ALTER TABLE `don`
+  ADD PRIMARY KEY (`utilisateur_id`),
+  ADD KEY `projet_id` (`projet_id`);
+
+--
+-- Index pour la table `projet`
+--
+ALTER TABLE `projet`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `don`
+--
+ALTER TABLE `don`
+  MODIFY `utilisateur_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `projet`
+--
+ALTER TABLE `projet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `don`
+--
+ALTER TABLE `don`
+  ADD CONSTRAINT `projet_id` FOREIGN KEY (`projet_id`) REFERENCES `projet` (`id`);
+
+--
+-- Contraintes pour la table `projet`
+--
+ALTER TABLE `projet`
+  ADD CONSTRAINT `utilisateur_id` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
