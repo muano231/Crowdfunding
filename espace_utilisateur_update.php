@@ -19,8 +19,7 @@ $email = $_POST['email'];
 $password_utilisateur = $_POST['password'];
 
 // Requête préparé avec les paramètres nommés
-$stmt = $pdo->prepare("UPDATE utilisateur  SET utilisateur_nom = :nom, utilisateur_prenom = :prenom, utilisateur_login = :login_user,
-                                                     utilisateur_email = :email, utilisateur_password = :pass WHERE utilisateur_id = :id");
+$stmt = $pdo->prepare("UPDATE utilisateur  SET nom = :nom, prenom = :prenom, login = :login_user, email = :email, password = :pass WHERE id = :id");
 $stmt->execute(array(
     'nom'=> $nom,
     'prenom'=> $prenom,

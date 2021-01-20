@@ -15,9 +15,8 @@ include_once('connexionbdd.php');
 
 
 // Requête préparé avec les paramètres nommés
-$stmt = $pdo->prepare("INSERT INTO projet (utilisateur_id, projet_nom, projet_description, projet_date_creation, projet_date_butoir, 
-                                                projet_objectif) 
-                                                VALUES (:id, :projet_nom, :projet_description, NOW(), :projet_date_butoire, :projet_objectif)");
+$stmt = $pdo->prepare("INSERT INTO projet (id, nom_projet, description_projet, date_creation, date_butoir, objectif) 
+                       VALUES (:id, :projet_nom, :projet_description, NOW(), :projet_date_butoire, :projet_objectif)");
 $stmt->execute(array(
     'id' => $id,
     'projet_nom' => $projet_nom,

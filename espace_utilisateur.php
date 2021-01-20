@@ -6,7 +6,7 @@ include_once('connexionbdd.php');
 $id = $_SESSION['id'];
 
 //Récupération des infos de l'utilisateur
-$stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE utilisateur_id = :id");
+$stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE id = :id");
 $stmt->execute(array(
     'id' => $id));
 
