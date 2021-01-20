@@ -57,7 +57,7 @@ $resultat = $stmt->fetch();
 
 <?php 
 
-$result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id = :id AND DATEDIFF( date_butoir, DATE( NOW() ) )>0 ORDER BY date_butoir ASC");
+$result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id = :id ORDER BY date_butoir ASC");
 $result->execute(array('id' => $id));
 //$nb_lignes = $stmt2->fetch();
 

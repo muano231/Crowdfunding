@@ -1,7 +1,12 @@
 <?php 
-
 include_once('connexionbdd.php');
 session_start();
+
+if (empty($_POST['projet_nom']) || empty($_POST['projet_description']) || empty($_POST['projet_date_butoire']) || empty($_POST['projet_objectif'])){
+    echo "tous les champs obligatoire";
+    echo '<p class="mb-0">Mauvais identifiant ou mdp,  <a href="connexion.php" class="alert-link">retouner page de connexion</a>.</p>';
+}
+
 // Attribution des variable de la methode POST 
 $id = $_SESSION['id'];
 $projet_nom = $_POST['projet_nom'];
