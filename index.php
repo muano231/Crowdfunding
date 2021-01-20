@@ -5,7 +5,7 @@ include_once("header.php");
 ?>
 
     <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5">
-        <h1>Bienvenue sur INSHALLAH SA MARCHE </h1>
+        <h1>Bienvenue sur le meilleur site de crowdfunding de la terre</h1>
         <h2>Voici tout les projets en cours </h2>
 
         <?php 
