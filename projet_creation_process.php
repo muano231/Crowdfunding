@@ -28,7 +28,7 @@ $stmt->execute(array(
 if(!$stmt){
     echo ("une erreur est survenue");
 }else{
-    header( "Localiser:espace_utilisateur.php" );
+    header( "Location:espace_utilisateur.php" );
 }
 
 
