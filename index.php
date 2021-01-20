@@ -9,16 +9,42 @@ include_once("header.php");
         <h2>Voici tout les projets en cours </h2>
 
         <?php 
+
+$result = $pdo->prepare("SELECT * FROM projet WHERE DATEDIFF( date_butoir, DATE( NOW() ) )>0 ORDER BY date_butoir ASC");
+$result->execute(array());
+//$nb_lignes = $stmt2->fetch();
+
+while($lignes = $result->fetch()){
+    ?>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
+    <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
+    <p class="card-text"> DATE BUTOIRE : <?php echo($lignes['date_butoir']); ?></p>
+    <div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo($lignes['objectif']); ?>" style="width: 75%"></div>
+    </div>
+    <br>
+    <a href="#" class="btn btn-primary">FAIRE UN DON</a>
+  </div>
+</div>
+
+    <?php
+}
+
+
+?>
+
+
+
+
+
+
+
+        <?php 
         if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
-            ?>
-            
-
-
-
-
-            <?php
-
-
         }else{
             ?>
              <a class="btn btn-primary" href="connexion.php">Se connecter</a>
