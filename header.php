@@ -4,8 +4,6 @@ session_start();
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -20,7 +18,6 @@ session_start();
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">YannFunding</a>
@@ -40,30 +37,31 @@ session_start();
                     if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
                         ?> 
                         <li class="nav-item">
-                        <a class="nav-link" href="espace_utilisateur.php">Mon Espace</a>
+                            <a class="nav-link" href="espace_utilisateur.php">Mon Espace</a>
                         </li>
 
                         <li class="nav-item">
-                        <a class="nav-link" href="deconnexion.php">Se déconnecter</a>
+                            <a class="nav-link" href="deconnexion.php">Se déconnecter</a>
                         </li>
 
                         <li class="nav-item">
-                        <a class="nav-link" href="projet_creation.php">Créer un projet</a>
+                            <a class="nav-link" href="projet_creation.php">Créer un projet</a>
                         </li>
 
-                        
+                        <li class="nav-item">
+                            <a class="nav-link">Mon Solde : <?php echo $_SESSION['solde'] ?>€</a>
+                        </li>
 
                         <?php 
                     }else{
                         ?>
                         <li class="nav-item">
-                        <a class="nav-link" href="inscription.php">Inscription</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="connexion.php">Connexion</a>
-                    </li>
-
-                    <?php 
+                            <a class="nav-link" href="inscription.php">Inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="connexion.php">Connexion</a>
+                        </li>
+                        <?php 
                     
                     };
                     ?>

@@ -19,18 +19,36 @@ include_once('connexionbdd.php');
 
 
 // Requête préparé avec les paramètres nommés
+/*
 $stmt = $pdo->prepare("INSERT INTO utilisateur (utilisateur_nom, utilisateur_prenom, utilisateur_login, utilisateur_email, 
                                                 utilisateur_password, utilisateur_date_inscription, utilisateur_solde) 
                                                 VALUES (:nom, :prenom, :login_user, :email, :pass, NOW(), :solde)");
 $stmt->execute(array(
-    'nom'=> $nom,
-    'prenom'=> $prenom,
-    'login_user'=> $login,
-    'email'=> $email,
-    'pass'=> $password_utilisateur,
-    'solde'=> 40
+    ':nom'=> $nom,
+    ':prenom'=> $prenom,
+    ':login_user'=> $login,
+    ':email'=> $email,
+    ':pass'=> $password_utilisateur,
+    ':solde'=> 40
 ));
+*/
 
+$stmt = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, login, mot_de_passe, email, date_inscription, solde)
+	VALUES (:nom, :prenom, :login_user, :pass, :email, NOW(), :solde)");
+
+	if($stmt->execute(array(
+		':nom'=> $nom,
+        ':prenom'=> $prenom,
+        ':login_user'=> $login,
+        ':email'=> $email,
+        ':pass'=> $password_utilisateur,
+        ':solde'=> 40
+    ))){
+        header( "refresh:0.2;url=index.php" );
+    }else{
+        echo ("une erreur est survenue");
+    }
+/*
 ?>
 
 <!DOCTYPE html>

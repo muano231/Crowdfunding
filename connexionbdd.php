@@ -2,9 +2,9 @@
 
 
 // Connexion à la base de données
-$dsn = 'mysql:dbname=yannfunding;host=127.0.0.1;charset=utf8mb4';
-$user = 'yannfunding';
-$password = 'LXSiYCDmcBBF8Rxk';
+$dsn = 'mysql:dbname=Projet_Crowdfunding;host=127.0.0.1:8889;charset=utf8mb4';
+$user = 'root';
+$password = 'root';
 
 
 // Test de conexion à la base de données 

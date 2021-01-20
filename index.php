@@ -5,7 +5,7 @@ include_once("header.php");
 ?>
 
     <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5">
-        <h1>Bienvenu sur YannFunding</h1>
+        <h1>Bienvenue sur YannFunding</h1>
         <h2>Voici tout les projets en cours </h2>
 
         <?php 

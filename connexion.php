@@ -14,7 +14,7 @@ include_once("header.php");
 
         <div>
                 <label class="form-label" for="password">Mot de passe :</label>
-                <input class="form-control" type="text" name="password" id="password" value="" required />
+                <input class="form-control" type="password" name="password" id="password" value="" required />
         </div>
         
         <input class="btn btn-primary" type="submit" value="Connexion" />
