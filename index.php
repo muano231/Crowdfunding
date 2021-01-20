@@ -33,7 +33,7 @@ while($lignes = $result->fetch()){
             <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
             <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
 
-            <form action="projet_détail" method="post">
+            <form action="projet_détail.php" method="post">
                 <input type="hidden" name="projet_id" id="projet_id" value="<?php echo($lignes['id']); ?>" />
                 <input class="btn btn-primary" type="submit" value="Plus de détails" />
             </form>

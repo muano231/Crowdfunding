@@ -21,9 +21,22 @@ $lignes = $result->fetch()
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo($lignes['objectif']); ?>" style="width: 75%"></div>
     </div>
     <br>
-    <a href="#" class="btn btn-primary">FAIRE UN DON</a>
+    <?php 
+        if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
+        ?>
+            <a href="#" class="btn btn-primary">FAIRE UN DON</a>
+        <?php
+        }else{
+            ?>
+        
+    <?php
+        }    
+            ?>
+
+   
+    
   </div>
-</div>
+</div> 
 
 
 
