@@ -28,23 +28,23 @@ $resultat = $stmt->fetch();
                 <form action="espace_utilisateur_update.php" method="post">
                     <label class="form-label" for="nom">Nom :</label>
                     <input class="form-control" type="text" name="nom" id="nom"
-                        value="<?php echo($resultat['utilisateur_nom']); ?>" />
+                        value="<?php echo($resultat['nom']); ?>" />
 
                     <label class="form-label" for="prenom">Prenom</label>
                     <input class="form-control" type="text" name="prenom" id="prenom"
-                        value="<?php echo($resultat['utilisateur_prenom']); ?>" />
+                        value="<?php echo($resultat['prenom']); ?>" />
 
                     <label class="form-label" for="login">Login</label>
                     <input class="form-control" type="text" name="login" id="login"
-                        value="<?php echo($resultat['utilisateur_login']); ?>" required />
+                        value="<?php echo($resultat['login']); ?>" required />
 
                     <label class="form-label" for="email">Email :</label>
                     <input class="form-control" type="email" name="email" id="email"
-                        value="<?php echo($resultat['utilisateur_email']); ?>" required />
+                        value="<?php echo($resultat['email']); ?>" required />
 
                     <label class="form-label" for="password">Mot de passe :</label>
                     <input class="form-control" type="text" name="password" id="password"
-                        value="<?php echo($resultat['utilisateur_password']); ?>" required />
+                        value="<?php echo($resultat['mot_de_passe']); ?>" required />
                     <br>
                     <input class="btn btn-primary" type="submit" value="Modifier" />
                 </form>
@@ -81,19 +81,19 @@ $lignes = $stmt2->fetch();
 
                 <label class="form-label" for="projet_nom">Nom du projet :</label>
                 <input class="form-control" type="text" name="projet_nom" id="projet_nom"
-                    value="<?php echo($lignes['projet_nom']); ?>" />
+                    value="<?php echo($lignes['nom']); ?>" />
 
                 <label class="form-label" for="projet_description">Description du projet</label>
                 <input class="form-control" type="text" name="projet_description" id="projet_description"
-                    value="<?php echo($lignes['projet_description']); ?>" />
+                    value="<?php echo($lignes['description']); ?>" />
 
                 <label class="form-label" for="">Date butoire</label>
                 <input class="form-control" type="text" name="" id=""
-                    value="<?php echo($lignes['projet_date_butoir']); ?>" disabled />
+                    value="<?php echo($lignes['date_butoir']); ?>" disabled />
 
                 <label class="form-label" for="email">Objectif :</label>
                 <input class="form-control" type="number" name="email" id="email"
-                    value="<?php echo($lignes['projet_objectif']); ?>" disabled />
+                    value="<?php echo($lignes['objectif']); ?>" disabled />
 
                 <br>
                 <input class="btn btn-primary" type="submit" value="Modifier" />
