@@ -16,13 +16,14 @@ $id_projet = $_POST['projet_id'];
 
 
 // Requête préparé avec les paramètres nommés
-$stmt = $pdo->prepare("UPDATE projet  SET nom_projet = :nom, description_projet = :description,  WHERE id = :id, utilisateur_id = :id_utilisateur ");
+$stmt = $pdo->prepare("UPDATE projet  SET nom_projet = :nom, description_projet = :description  WHERE id = :id AND utilisateur_id = :id_utilisateur ");
 $stmt->execute(array(
     'nom'=> $nom,
     'description'=> $description,
     'id' => $id_projet,
     'id_utilisateur' => $id
 ));
+
 var_dump($id_projet);
 var_dump($stmt);
 
