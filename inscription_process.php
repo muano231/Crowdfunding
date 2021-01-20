@@ -13,7 +13,6 @@ $prenom = $_POST['prenom'];
 $login = $_POST['login'];
 $email = $_POST['email'];
 $password_utilisateur = $_POST['password'];
-echo "salut";
 
 include_once('connexionbdd.php');
 
