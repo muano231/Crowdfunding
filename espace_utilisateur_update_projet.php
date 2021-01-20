@@ -24,9 +24,8 @@ $stmt->execute(array(
     'id_utilisateur' => $id
 ));
 
-var_dump($id_projet);
-var_dump($stmt);
 
-//header( "Location:espace_utilisateur.php" );
+
+header( "Location:espace_utilisateur.php" );
 
 
