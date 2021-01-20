@@ -14,6 +14,7 @@ $login = $_POST['login'];
 $email = $_POST['email'];
 $password_utilisateur = $_POST['password'];
 
+$hash_mdp = sha1 ($password_utilisateur);
 
 include_once('connexionbdd.php');
 
@@ -27,7 +28,7 @@ if($stmt->execute(array(
     ':prenom'=> $prenom,
     ':login_user'=> $login,
     ':email'=> $email,
-    ':pass'=> $password_utilisateur,
+    ':pass'=> $hash_mdp,
     ':solde'=> 40
 ))){
     header("Location:index.php");

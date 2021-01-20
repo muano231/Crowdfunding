@@ -43,8 +43,7 @@ $resultat = $stmt->fetch();
                         value="<?php echo($resultat['email']); ?>" required />
 
                     <label class="form-label" for="password">Mot de passe :</label>
-                    <input class="form-control" type="text" name="password" id="password"
-                        value="<?php echo($resultat['mot_de_passe']); ?>" required />
+                    <input class="form-control" type="text" name="password" id="password" required />
                     <br>
                     <input class="btn btn-primary" type="submit" value="Modifier" />
                 </form>

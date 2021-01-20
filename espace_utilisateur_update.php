@@ -16,6 +16,8 @@ $login = $_POST['login'];
 $email = $_POST['email'];
 $password_utilisateur = $_POST['password'];
 
+$hash_mdp = sha1 ($password_utilisateur);
+
 // Requête préparé avec les paramètres nommés
 $stmt = $pdo->prepare("UPDATE utilisateur  SET nom = :nom, prenom = :prenom, login = :login_user, email = :email, mot_de_passe = :pass WHERE id = :id");
 $stmt->execute(array(
@@ -23,7 +25,7 @@ $stmt->execute(array(
     'prenom'=> $prenom,
     'login_user'=> $login,
     'email'=> $email,
-    'pass'=> $password_utilisateur,
+    'pass'=> $hash_mdp,
     'id' => $id
 ));
 
