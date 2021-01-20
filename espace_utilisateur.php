@@ -94,9 +94,9 @@ while($lignes = $result->fetch()){
                     <input class="btn btn-primary" type="submit" value="Modifier" />
                 </form>
                 <br/>
-                <form action="espace_utilisateur_suppression.php" method="post">
-                    <input class="form-control" type="text" name="projet_nom" id="projet_nom"
-                        value="<?php echo($lignes['nom_projet']); ?>" />
+                <form action="confirmation_suppression.php" method="post">
+                    <input class="form-control" type="hidden" name="projet_nom" id="projet_nom"
+                        value="<?php echo($lignes['id']); ?>" />
                     <input class="btn btn-danger" type="submit" value="Supprimer le projet" />
                 </form>  
             </div>
