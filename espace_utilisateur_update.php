@@ -28,4 +28,6 @@ $stmt->execute(array(
 ));
 
 
-header( "Localisation:espace_utilisateur.php" );
+header( "Location:espace_utilisateur.php" );
+
+
