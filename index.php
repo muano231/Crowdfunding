@@ -1,14 +1,24 @@
 <?php 
 
 include_once("header.php");
+include_once("connexionbdd.php");
 
 ?>
 
-    <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5">
-        <h1>Bienvenue sur le meilleur site de crowdfunding de la terre</h1>
-        <h2>Voici tout les projets en cours </h2>
+<div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5">
+    <h1>Bienvenue sur le meilleur site de crowdfunding de la terre</h1>
+    <h2>Voici tout les projets en cours </h2>
 
-        <?php 
+    <?php 
+        if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
+        }else{
+            ?>
+    <a class="btn btn-primary" href="connexion.php">Se connecter</a>
+    <?php
+        }    
+            ?>
+
+    <?php 
 
 $result = $pdo->prepare("SELECT * FROM projet WHERE DATEDIFF( date_butoir, DATE( NOW() ) )>0 ORDER BY date_butoir ASC");
 $result->execute(array());
@@ -17,19 +27,18 @@ $result->execute(array());
 while($lignes = $result->fetch()){
     ?>
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
-    <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
-    <p class="card-text"> DATE BUTOIRE : <?php echo($lignes['date_butoir']); ?></p>
-    <div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo($lignes['objectif']); ?>" style="width: 75%"></div>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
+            <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
+
+            <form action="projet_détail" method="post">
+                <input type="hidden" name="projet_id" id="projet_id" value="<?php echo($lignes['id']); ?>" />
+                <input class="btn btn-primary" type="submit" value="Plus de détails" />
+            </form>
+        </div>
     </div>
-    <br>
-    <a href="#" class="btn btn-primary">FAIRE UN DON</a>
-  </div>
-</div>
 
     <?php
 }
@@ -43,15 +52,8 @@ while($lignes = $result->fetch()){
 
 
 
-        <?php 
-        if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
-        }else{
-            ?>
-             <a class="btn btn-primary" href="connexion.php">Se connecter</a>
-             <?php
-        }    
-            ?>
-    </div>
+
+</div>
 
 <?php 
 
