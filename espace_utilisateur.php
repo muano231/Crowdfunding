@@ -94,11 +94,12 @@ while($lignes = $result->fetch()){
                     <input class="btn btn-primary" type="submit" value="Modifier" />
                 </form>
                 <br/>
+                <a href="suppression.php?nom_projet=<?php echo $lignes['nom_projet'] ?>" title="test">Envoyer des données via une url</a>
+                <!--
                 <form action="espace_utilisateur_suppression.php" method="post">
-                    <input class="form-control" type="text" name="projet_nom" id="projet_nom"
-                        value="<?php echo($lignes['nom_projet']); ?>" />
                     <input class="btn btn-danger" type="submit" value="Supprimer le projet" />
                 </form>  
+                -->
             </div>
         </div>
     </div>
