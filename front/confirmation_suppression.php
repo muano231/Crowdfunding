@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include_once('../include/connexionbdd.php');
 $projet_id = $_POST['id'];
