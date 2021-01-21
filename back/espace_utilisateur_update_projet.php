@@ -1,10 +1,10 @@
 <?php 
 session_start();
-include_once('connexionbdd.php');
+include_once('../include/connexionbdd.php');
 
 if (empty($_POST['projet_nom']) || empty($_POST['projet_description'])){
-    echo "tous les champs obligatoire";
-    echo '<p class="mb-0">Mauvais identifiant ou mdp,  <a href="connexion.php" class="alert-link">retouner page de connexion</a>.</p>';
+    echo '<p class="mb-0">Veuillez renseigner tous les champs pour effectuer une modification ! <a href="../front/espace_utilisateur.php" class="alert-link">retouner sur la page de modification</a>.</p>';
+    exit;
 }
 
  
@@ -26,6 +26,6 @@ $stmt->execute(array(
 
 
 
-header( "Location:espace_utilisateur.php" );
+header( "Location:../front/espace_utilisateur.php" );
 
 

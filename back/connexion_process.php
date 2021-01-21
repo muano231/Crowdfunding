@@ -1,7 +1,7 @@
 <?php 
 
 
-include_once('connexionbdd.php');
+include_once('../include/connexionbdd.php');
 $login = $_POST['login'];
 $password = $_POST['password'];
 $hash_mdp = sha1 ($password);
@@ -25,9 +25,7 @@ if ($resultat && $isPasswordCorrect){
     $_SESSION['id'] = $resultat['id'];
     $_SESSION['login'] = $login;
     $_SESSION['solde'] = $resultat['solde'];
-    header( "Location:index.php" );
+    header( "Location:../front/index.php" );
 }else{
-    echo $resultat['mot_de_passe'];
-    echo $hash_mdp;
-    echo '<p class="mb-0">Mauvais identifiant ou mdp,  <a href="connexion.php" class="alert-link">retouner page de connexion</a>.</p>';
+    echo '<p class="mb-0">Mauvais identifiant ou mdp ! <a href="../front/connexion.php" class="alert-link">Retouner sur la page de connexion</a>.</p>';
 }

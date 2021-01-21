@@ -1,7 +1,7 @@
 <?php
 
-include_once('header.php');
-include_once('connexionbdd.php');
+include_once('../include/header.php');
+include_once('../include/connexionbdd.php');
 
 $id = $_SESSION['id'];
 
@@ -25,7 +25,7 @@ $resultat = $stmt->fetch();
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">Modifier mes informations</h5>
-                <form action="espace_utilisateur_update.php" method="post">
+                <form action="../back/espace_utilisateur_update.php" method="post">
                     <label class="form-label" for="nom">Nom :</label>
                     <input class="form-control" type="text" name="nom" id="nom"
                         value="<?php echo($resultat['nom']); ?>" />
@@ -71,7 +71,7 @@ while($lignes = $result->fetch()){
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">Modifier mon projet</h5>
-                <form action="espace_utilisateur_update_projet.php" method="post">
+                <form action="../back/espace_utilisateur_update_projet.php" method="post">
                 <input type="hidden" name="projet_id" id="projet_id" value="<?php echo($lignes['id']); ?>"/>
                     <label class="form-label" for="projet_nom">Nom du projet :</label>
                     <input class="form-control" type="text" name="projet_nom" id="projet_nom"
@@ -81,7 +81,7 @@ while($lignes = $result->fetch()){
                     <input class="form-control" type="text" name="projet_description" id="projet_description"
                         value="<?php echo($lignes['description_projet']); ?>" />
 
-                    <label class="form-label" for="">Date butoire</label>
+                    <label class="form-label" for="">Date butoir</label>
                     <input class="form-control" type="text" name="" id=""
                         value="<?php echo($lignes['date_butoir']); ?>" disabled />
 

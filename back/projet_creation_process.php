@@ -1,39 +1,35 @@
 <?php 
-include_once('connexionbdd.php');
+include_once('../include/connexionbdd.php');
 session_start();
 
-if (empty($_POST['projet_nom']) || empty($_POST['projet_description']) || empty($_POST['projet_date_butoire']) || empty($_POST['projet_objectif'])){
+if (empty($_POST['projet_nom']) || empty($_POST['projet_description']) || empty($_POST['projet_date_butoir']) || empty($_POST['projet_objectif'])){
     echo "tous les champs obligatoire";
-    echo '<p class="mb-0">Mauvais identifiant ou mdp,  <a href="connexion.php" class="alert-link">retouner page de connexion</a>.</p>';
+    echo '<p class="mb-0">Mauvais identifiant ou mdp,  <a href="../front/connexion.php" class="alert-link">retouner page de connexion</a>.</p>';
 }
 
 // Attribution des variable de la methode POST 
 $id = $_SESSION['id'];
 $projet_nom = $_POST['projet_nom'];
 $projet_description = $_POST['projet_description'];
-$projet_date_butoire = $_POST['projet_date_butoire'];
+$projet_date_butoir = $_POST['projet_date_butoir'];
 $projet_objectif = $_POST['projet_objectif'];
-
-
-
-include_once('connexionbdd.php');
 
 
 // Requête préparé avec les paramètres nommés
 $stmt = $pdo->prepare("INSERT INTO projet (utilisateur_id, nom_projet, description_projet, date_creation, date_butoir, objectif) 
-                       VALUES (:id, :projet_nom, :projet_description, NOW(), :projet_date_butoire, :projet_objectif)");
+                       VALUES (:id, :projet_nom, :projet_description, NOW(), :projet_date_butoir, :projet_objectif)");
 $stmt->execute(array(
     'id' => $id,
     'projet_nom' => $projet_nom,
     'projet_description' => $projet_description,
-    'projet_date_butoire' => $projet_date_butoire,
+    'projet_date_butoir' => $projet_date_butoir,
     'projet_objectif' => $projet_objectif
 ));
 
 if(!$stmt){
     echo ("une erreur est survenue");
 }else{
-    header( "Location:espace_utilisateur.php" );
+    header( "Location:../front/espace_utilisateur.php" );
 }
 
 

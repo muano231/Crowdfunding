@@ -1,12 +1,12 @@
 <?php 
 
-include_once("header.php");
+include_once("../include/header.php");
 
 ?>
 
 <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5 ">
     <h1>Connectez-vous : </h1>
-    <form action="connexion_process.php" method="post">
+    <form action="../back/connexion_process.php" method="post">
         <div>
                 <label class="form-label" for="login">Login :</label>
                 <input class="form-control" type="text" name="login" id="login" value="" required />
@@ -22,7 +22,7 @@ include_once("header.php");
 
     </form>
 
-        <a href="inscription.php">Vous n'avez pas encore de compte ? inscrivez-vous!</a>
+        <a href="../front/inscription.php">Vous n'avez pas encore de compte ? inscrivez-vous!</a>
     
 </div>
 
@@ -30,4 +30,4 @@ include_once("header.php");
 
 
 
-include_once("footer.php");
+include_once("../include/footer.php");

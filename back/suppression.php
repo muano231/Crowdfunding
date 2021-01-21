@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include_once('connexionbdd.php');
+include_once('../include/connexionbdd.php');
 $projet_id = $_POST['id'];
 $utilisateur_id = $_POST['utilisateur_id'];
 
@@ -10,5 +10,5 @@ $stmt->execute(array(
     'utilisateur_id' => $utilisateur_id
 ));
 
-header( "Location:espace_utilisateur.php" );
+header( "Location:../front/espace_utilisateur.php" );
 ?>

@@ -1,14 +1,13 @@
 <?php 
 
-include_once("header.php");
-include_once("connexionbdd.php");
+include_once("../include/header.php");
+include_once("../include/connexionbdd.php");
 
-$id = $_POST['projet_id'];
+$nom_projet = $_GET['nom_projet'];
 
-$result = $pdo->prepare("SELECT * FROM projet WHERE id = :projet_id");
-$result->execute(array('projet_id' => $id));
-
-$lignes = $result->fetch()
+$result = $pdo->prepare("SELECT * FROM projet WHERE nom_projet = :nom_projet");
+$result->execute(array('nom_projet' => $nom_projet));
+$lignes = $result->fetch();
     ?>
 
 <div class="card" style="width: 18rem;">
@@ -16,7 +15,7 @@ $lignes = $result->fetch()
   <div class="card-body">
     <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
     <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
-    <p class="card-text"> DATE BUTOIRE : <?php echo($lignes['date_butoir']); ?></p>
+    <p class="card-text"> DATE BUTOIR : <?php echo($lignes['date_butoir']); ?></p>
     <div class="progress">
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo($lignes['objectif']); ?>" style="width: 75%"></div>
     </div>

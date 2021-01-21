@@ -1,6 +1,6 @@
 <?php
 
-include_once('header.php');
+include_once('../include/header.php');
 
 ?>
 <div class="card mb-3" style="max-width: 1100px;margin-left:150px;margin-top:50px;">
@@ -24,8 +24,8 @@ include_once('header.php');
 
                     
 
-                    <label class="form-label" for="projet_date_butoire">Date butoire :</label>
-                    <input class="form-control" type="date" name="projet_date_butoire" id="projet_date_butoire"value="" required />
+                    <label class="form-label" for="projet_date_butoir">Date butoir :</label>
+                    <input class="form-control" type="date" name="projet_date_butoir" id="projet_date_butoir"value="" required />
 
                     <label class="form-label" for="projet_objectif">Objectif en € :</label>
                     <input class="form-control" type="number" name="projet_objectif" id="projet_objectif "value="" required />

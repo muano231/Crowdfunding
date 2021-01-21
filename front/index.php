@@ -1,7 +1,7 @@
 <?php 
+include_once("../include/connexionbdd.php");
+include_once("../include/header.php");
 
-include_once("header.php");
-include_once("connexionbdd.php");
 
 ?>
 
@@ -24,19 +24,18 @@ $result = $pdo->prepare("SELECT * FROM projet WHERE DATEDIFF( date_butoir, DATE(
 $result->execute(array());
 //$nb_lignes = $stmt2->fetch();
 
+
 while($lignes = $result->fetch()){
+    $nom_projet = $lignes['nom_projet'];
     ?>
 
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
+            <h5 class="card-title"><?php echo $nom_projet; ?></h5>
             <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
 
-            <form action="projet_détail.php" method="post">
-                <input type="hidden" name="projet_id" id="projet_id" value="<?php echo($lignes['id']); ?>" />
-                <input class="btn btn-primary" type="submit" value="Plus de détails" />
-            </form>
+            <a href="projet_détail.php?nom_projet=<?php echo $nom_projet; ?>" title="Envoyer"><input class="btn btn-primary" type="submit" value="Plus de détails" /></a>
         </div>
     </div>
 
@@ -46,15 +45,8 @@ while($lignes = $result->fetch()){
 
 ?>
 
-
-
-
-
-
-
-
 </div>
 
 <?php 
 
-include_once("footer.php");
+include_once("../include/footer.php");

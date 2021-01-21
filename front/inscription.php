@@ -1,12 +1,12 @@
 <?php 
 
-include_once("header.php");
+include_once("../include/header.php");
 
 ?>
 
 <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5 ">
     <h1>Formulaire d'inscription : </h1>
-    <form action="inscription_process.php" method="post">
+    <form action="../back/inscription_process.php" method="post">
 
         <div class="mb-3">
             <div >
@@ -41,4 +41,4 @@ include_once("header.php");
 
 <?php 
 
-include_once("footer.php");
+include_once("../include/footer.php");

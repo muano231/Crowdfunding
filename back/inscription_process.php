@@ -1,7 +1,8 @@
 <?php 
 // Vérification de tous les champs du formulaire
 if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['login']) || empty($_POST['email']) || empty($_POST['password'])){
-    echo "tous les champs obligatoire";
+    //echo "Veuillez remplir tous les champs pour vous inscrire !";
+    echo '<p class="mb-0">Veuillez remplir tous les champs pour vous inscrire ! <a href="../front/inscription.php" class="alert-link">retouner sur la page inscription</a>.</p>';
     exit;
 
 }
@@ -16,7 +17,7 @@ $password_utilisateur = $_POST['password'];
 
 $hash_mdp = sha1 ($password_utilisateur);
 
-include_once('connexionbdd.php');
+include_once('../include/connexionbdd.php');
 
 
 // Requête préparé avec les paramètres nommés
@@ -31,7 +32,7 @@ if($stmt->execute(array(
     ':pass'=> $hash_mdp,
     ':solde'=> 40
 ))){
-    header("Location:index.php");
+    header("Location:../front/index.php");
 }else{
     echo ("une erreur est survenue");
 }
