@@ -14,8 +14,10 @@ if ($montant == 0 && isset($projet_id)){
     exit;
 }
 
+//echo $id_utilisateur.$projet_id.$montant;
+
 $stmt = $pdo->prepare("INSERT INTO don (utilisateur_id, projet_id, montant, date_don)
-                    VALUES (:utilisateur_id, :projet_id, :montant, NOW()");
+                    VALUES (:utilisateur_id, :projet_id, :montant, NOW())");
 
 if($stmt->execute(array(
     ':utilisateur_id'=> $id_utilisateur,
