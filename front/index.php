@@ -20,12 +20,12 @@ include_once("../include/header.php");
 
     <?php 
 
-$result = $pdo->prepare("SELECT * FROM projet WHERE DATEDIFF( date_butoir, DATE( NOW() ) )>0 ORDER BY date_butoir ASC");
+$result = $pdo->prepare("SELECT * FROM projet WHERE DATEDIFF( date_butoir, DATE( NOW() ) )>=0 ORDER BY date_butoir ASC");
 $result->execute(array());
 
 $element_affichage = "lister_projets";
 
-if($_SESSION["etat"] != TRUE) {
+if($_SESSION["id"] != TRUE) {
     include_once("../include/affichage.php");
 }else{
     include_once("../include/affichage_connecte.php");
