@@ -6,7 +6,7 @@ include_once("../include/connexionbdd.php");
 $nom_projet = $_GET['nom_projet'];
 $element_affichage = "detail_projet";
 
-$result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet AS description_projet, p.date_butoir AS date_butoir, p.objectif AS objectif, p.id AS project_id, u.id AS utilisateur_id, SUM(d.montant) AS montant
+$result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet AS description_projet, p.date_butoir AS date_butoir, p.objectif AS objectif, p.id AS project_id, u.id AS utilisateur_id
                 FROM projet p
                 JOIN don d ON p.id = d.projet_id
                 JOIN utilisateur u ON p.utilisateur_id = u.id
@@ -14,8 +14,9 @@ $result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet
                 GROUP BY p.id");
 $result->execute(array('nom_projet' => $nom_projet));
 $lignes = $result->fetch();
-
-$pourcentage = ($lignes['montant']/$lignes['objectif'])*100;
+//$montant = $lignes['montant'];
+$montant = 100;
+$pourcentage = ($montant/$lignes['objectif'])*100;
 ?>
 
 <div class="card" style="width: 18rem;">

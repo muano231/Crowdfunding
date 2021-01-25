@@ -22,7 +22,7 @@ $infos = $req->fetch();
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">Donner pour le projet : <?php echo $infos['nom_projet'] ?></h5>
-                <form action="../back/don_process.php" method="post">
+                <form action="../back/projet_détail.php?nom_projet= <?php echo $infos['nom_projet'] ?>" method="post">
                     <a>Description du projet : <?php echo $infos['description_projet'] ?></a>
                     <br>
                     <a>Montant à atteindre : <?php echo $infos['objectif'] ?></a>
