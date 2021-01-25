@@ -2,7 +2,7 @@
 session_start();
 include_once('../include/connexionbdd.php');
 $projet_id = $_POST['id'];
-$utilisateur_id = $_POST['utilisateur_id'];
+$utilisateur_id = $_SESSION['id'];
 
 ?>
 <form action="../back/suppression.php" method="post">

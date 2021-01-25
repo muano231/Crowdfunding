@@ -47,8 +47,6 @@ while($lignes = $result->fetch()){
                 <form action="confirmation_suppression.php" method="post">
                     <input class="form-control" type="hidden" name="id" id="id"
                         value="<?php echo($lignes['id']); ?>" />
-                    <input class="form-control" type="hidden" name="utilisateur_id" id="utilisateur_id"
-                        value="<?php echo($resultat['id']); ?>" />
                     <input class="btn btn-danger" type="submit" value="Supprimer le projet" />
                 </form>  
             </div>

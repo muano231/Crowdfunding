@@ -26,6 +26,6 @@ $stmt->execute(array(
 
 
 
-header( "Location:../front/espace_utilisateur.php" );
+header( "Location:../front/espace_utilisateur_projets.php" );
 
 
