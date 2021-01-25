@@ -29,7 +29,7 @@ $stmt->execute(array(
 if(!$stmt){
     echo ("une erreur est survenue");
 }else{
-    header( "Location:../front/espace_utilisateur.php" );
+    header( "Location:../front/espace_utilisateur_projets.php" );
 }
 
 

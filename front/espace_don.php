@@ -9,12 +9,6 @@ if(!isset($_SESSION["id"])) {
 $id = $_GET['projet'];
 
 $req = $pdo->prepare("SELECT DISTINCT utilisateur_id, nom_projet, description_projet, date_creation, date_butoir, objectif FROM projet WHERE id = :id");
-                        /*
-$req = $pdo->prepare("SELECT d.utilisateur_id as utilisateur_id, d.projet_id as projet_id, p.nom_projet as nom_projet, p.description_projet as description_projet, 
-                        p.date_creation as date_creation, p.date_butoir as date_butoir, p.objectif as objectif, d.montant as montant, d.date_don as date_don
-                        FROM don d
-                        JOIN projet p on d.projet_id = p.id
-                        WHERE p.nom_projet = :nom_projet");*/
 $req->execute(array(
     'id' => $id));
 $infos = $req->fetch();

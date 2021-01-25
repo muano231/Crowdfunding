@@ -30,6 +30,7 @@ $req->execute(array(
                 <th scope="col">Donateur</th>
                 <th scope="col">Projet</th>
                 <th scope="col">Montant</th>
+                <th scope="col">Liens des projets</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@ $req->execute(array(
                 echo "<td>" . $ligne_don['login'] . "</td>";
                 echo "<td>" . $ligne_don['nom_projet'] . "</td>";
                 echo "<td>" . $ligne_don['montant'] . " € </td>";
+                echo "<td><a href='../front/projet_détail.php?nom_projet=" . $ligne_don['nom_projet'] . "'>Accéder au projet</a></td>";
                 echo "</tr>";
             }
             ?>

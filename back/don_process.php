@@ -24,7 +24,13 @@ if($stmt->execute(array(
     ':projet_id'=> $projet_id,
     ':montant'=> $montant
 ))){
-    header( "Location:../front/connexion.php" );
+    $_SESSION['solde'] = $solde - $montant;
+    $maj_solde = $pdo->prepare("UPDATE utilisateur  SET solde = :solde  WHERE id = :id_utilisateur ");
+    $maj_solde->execute(array(
+        'solde'=> $_SESSION['solde'],
+        'id_utilisateur'=> $id_utilisateur
+    ));
+    header( "Location:../front/espace_don.php?projet=".$projet_id );
 }else{
     echo ("une erreur est survenue");
 }
