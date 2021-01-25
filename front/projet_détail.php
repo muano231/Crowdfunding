@@ -14,6 +14,8 @@ $result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet
                 GROUP BY p.id");
 $result->execute(array('nom_projet' => $nom_projet));
 $lignes = $result->fetch();
+
+$pourcentage = ($lignes['montant']/$lignes['objectif'])*100;
 ?>
 
 <div class="card" style="width: 18rem;">
@@ -24,7 +26,7 @@ $lignes = $result->fetch();
         <p class="card-text"> DATE BUTOIR : <?php echo($lignes['date_butoir']); ?></p>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" 
-                aria-valuemax="100" style="width: <?php echo($lignes['montant']); ?>%"></div>
+                aria-valuemax="100" style="width: <?php echo($pourcentage); ?>%"></div>
         </div>
         <br>
         <?php
