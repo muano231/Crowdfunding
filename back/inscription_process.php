@@ -21,10 +21,13 @@ include_once('../include/connexionbdd.php');
 
 
 //Requête de vérif si mail déjà utilisé 
-$verif = $pdo->query("SELECT email FROM utilisateur WHERE email =".$email);
+$verif = $pdo->prepare("SELECT email FROM utilisateur WHERE email = :email");
+$verif->execute([
+    'email' => $email
+]);
 
 $resultat = $verif->fetch();
-var_dump($resultat);
+
 if(isset($resultat['email']) ){
     echo('Cette adresse email est déja utilisé');
     echo(' Veuillez renseigner une autre adresse email')
