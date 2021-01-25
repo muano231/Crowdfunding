@@ -1,23 +1,5 @@
 <?php
 switch($element_affichage){
-    case "lister_projets" :
-        while($lignes = $result->fetch()){
-            $nom_projet = $lignes['nom_projet'];
-            ?>
-        
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $nom_projet; ?></h5>
-                    <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
-        
-                    <a href="../front/connexion.php" title="Envoyer"><input class="btn btn-primary" type="submit" value="Connectez-vous pour donner" /></a>
-                </div>
-            </div>
-            <?php
-        }
-        break;
-
         case "detail_projet":
             ?>
             <div class="card" style="width: 18rem;">

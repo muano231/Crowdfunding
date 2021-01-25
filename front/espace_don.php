@@ -3,13 +3,12 @@
 include_once('../include/header.php');
 include_once('../include/connexionbdd.php');
 
-if($_SESSION["etat"] != TRUE) {
-    echo "Vous n'êtes pas connecté !";
+if(!isset($_SESSION["id"])) {
     header("Location:connexion.php");
 }
-$id = $_POST['id'];
+$id = $_GET['projet'];
 
-$req = $pdo->prepare("SELECT DISTINCT utilisateur_id, nom_projet, date_creation, date_butoir, objectif FROM projet WHERE nom_projet = :nom_projet");
+$req = $pdo->prepare("SELECT DISTINCT utilisateur_id, nom_projet, description_projet, date_creation, date_butoir, objectif FROM projet WHERE id = :id");
                         /*
 $req = $pdo->prepare("SELECT d.utilisateur_id as utilisateur_id, d.projet_id as projet_id, p.nom_projet as nom_projet, p.description_projet as description_projet, 
                         p.date_creation as date_creation, p.date_butoir as date_butoir, p.objectif as objectif, d.montant as montant, d.date_don as date_don
@@ -17,9 +16,9 @@ $req = $pdo->prepare("SELECT d.utilisateur_id as utilisateur_id, d.projet_id as 
                         JOIN projet p on d.projet_id = p.id
                         WHERE p.nom_projet = :nom_projet");*/
 $req->execute(array(
-    'nom_projet' => $nom_projet));
+    'id' => $id));
 $infos = $req->fetch();
-print_r($infos);
+
 ?>
 <div class="card mb-3" style="max-width: 1010px;margin-left:150px;margin-top:50px;">
     <div class="row g-0">
@@ -30,16 +29,16 @@ print_r($infos);
             <div class="card-body">
                 <h5 class="card-title">Donner pour le projet : <?php echo $infos['nom_projet'] ?></h5>
                 <form action="../back/don_process.php" method="post">
-                
-                    <label class="form-label" for="montant">Montant :</label>
-                    <input class="form-control" type="text" name="montant" id="montant"/>
-                    <a></a>
-                    <a>Montant à atteindre : <?php echo $infos['nom_projet'] ?></a>
+                    <a>Description du projet : <?php echo $infos['description_projet'] ?></a>
+                    <br>
+                    <a>Montant à atteindre : <?php echo $infos['objectif'] ?></a>
                     <br>
                     <label class="form-label" for="montant">Donner :</label>
-                    <input class="form-control" type="text" name="montant" id="montant"/>
+                    <input class="form-control" type="text" name="montant" id="montant" required/>
+                    <input class="form-control" type="hidden" name="projet_id" id="projet_id"
+                            value="<?php echo $id; ?>"/>
                     <br>
-                    <input class="btn btn-primary" type="submit" value="Donner" />
+                    <input class="btn btn-primary" type="submit" value="Faire le don" />
                 </form>
             </div>
         </div>
