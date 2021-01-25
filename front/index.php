@@ -25,7 +25,7 @@ $result->execute(array());
 
 $element_affichage = "lister_projets";
 
-if($_SESSION["id"] != TRUE) {
+if(!isset($_SESSION["id"])) {
     include_once("../include/affichage.php");
 }else{
     include_once("../include/affichage_connecte.php");
