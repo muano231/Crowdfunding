@@ -29,10 +29,10 @@ $resultat = $verif->fetch();
 
 if(isset($resultat['email']) && $resultat['id'] != $id ){
     echo('Cette adresse email est déja utilisé');
-    echo(' Veuillez renseigner une autre adresse email')
+    echo(' Veuillez renseigner une autre adresse email ou laisser la votre tel qu\'elle ')
     ?>
     <br>
-    <a href="/front/inscription.php">Retourner à l'inscription</a>
+    <a href="/front/espace_utilisateur.php">Retourner à votre espace</a>
     <?php
 }else{
 

@@ -42,14 +42,6 @@ if(isset($resultat['email']) ){
 
 
 
-
-
-
-}
-
-
-
-
 // Requête préparé avec les paramètres nommés
 $stmt = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, login, mot_de_passe, email, date_inscription, solde)
                     VALUES (:nom, :prenom, :login_user, :pass, :email, NOW(), :solde)");
