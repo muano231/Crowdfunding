@@ -32,7 +32,7 @@ if($stmt->execute(array(
     ':pass'=> $hash_mdp,
     ':solde'=> 40
 ))){
-    header("Location:../front/index.php");
+    header( "Location:../front/connexion.php" );
 }else{
     echo ("une erreur est survenue");
 }
