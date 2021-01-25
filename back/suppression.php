@@ -10,5 +10,5 @@ $stmt->execute(array(
     'utilisateur_id' => $utilisateur_id
 ));
 
-header( "Location:../front/espace_utilisateur.php" );
+header( "Location:../front/espace_utilisateur_projets.php" );
 ?>
