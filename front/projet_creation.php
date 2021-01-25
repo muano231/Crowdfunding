@@ -12,7 +12,7 @@ include_once('../include/header.php');
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">Lancez vous ! Créer votre propre projet !</h5>
-                <form action="projet_creation_process.php" method="post">
+                <form action="/back/projet_creation_process.php" method="post">
 
 
                     <label class="form-label" for="projet_nom">Nom du projet</label>
