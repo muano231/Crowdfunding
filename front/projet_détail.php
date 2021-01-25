@@ -33,7 +33,7 @@ $pourcentage = ($lignes['montant']/$lignes['objectif'])*100;
         if(!isset($_SESSION["id"])) {
           echo "<a href='../front/connexion.php' class='btn btn-primary'>Connectez-Vous pour Donner</a>";
         }else{
-          echo "<a href='../front/espace_don.php?projet= ". $lignes['id']. "' class='btn btn-primary'>Faire Un Don</a>";
+          echo "<a href='../front/espace_don.php?projet= ". $lignes['project_id']. "' class='btn btn-primary'>Faire Un Don</a>";
         }
         ?>
     </div>
