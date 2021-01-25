@@ -18,6 +18,29 @@ $password_utilisateur = $_POST['password'];
 
 $hash_mdp = sha1 ($password_utilisateur);
 
+
+//Requête de vérif si mail déjà utilisé 
+$verif = $pdo->prepare("SELECT email, id FROM utilisateur WHERE email = :email");
+$verif->execute([
+    'email' => $email
+]);
+
+$resultat = $verif->fetch();
+
+if(isset($resultat['email']) && $resultat['id'] != $id ){
+    echo('Cette adresse email est déja utilisé');
+    echo(' Veuillez renseigner une autre adresse email')
+    ?>
+    <br>
+    <a href="/front/inscription.php">Retourner à l'inscription</a>
+    <?php
+}else{
+
+
+
+
+
+
 // Requête préparé avec les paramètres nommés
 $stmt = $pdo->prepare("UPDATE utilisateur  SET nom = :nom, prenom = :prenom, login = :login_user, email = :email, mot_de_passe = :pass WHERE id = :id");
 $stmt->execute(array(
@@ -29,7 +52,7 @@ $stmt->execute(array(
     'id' => $id
 ));
 
-/*
+
 header( "Location:../front/espace_utilisateur.php" );
 
-
+}
