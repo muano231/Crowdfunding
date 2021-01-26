@@ -77,6 +77,10 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link" href="../front/connexion.php">Connexion</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link">Cookie : <?php echo $_COOKIE['clicker'] ?>€</a>
+                        </li>
                         <?php 
                     
                     };

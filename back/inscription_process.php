@@ -21,7 +21,7 @@ include_once('../include/connexionbdd.php');
 
 
 //Requête de vérif si mail déjà utilisé 
-$verif = $pdo->prepare("SELECT email FROM utilisateur WHERE email = :email");
+$verif = $pdo->prepare("SELECT * FROM utilisateur WHERE email = :email");
 $verif->execute([
     'email' => $email
 ]);
@@ -35,16 +35,7 @@ if(isset($resultat['email']) ){
     <br>
     <a href="/front/inscription.php">Retourner à l'inscription</a>
     <?php
-}else{
-
-
-
-
-
-
-
-
-
+    exit;
 }
 
 
@@ -62,7 +53,11 @@ if($stmt->execute(array(
     ':pass'=> $hash_mdp,
     ':solde'=> 40
 ))){
- // header( "Location:../front/connexion.php" );
+    session_start();
+    $_SESSION['id'] = $resultat['id'];
+    $_SESSION['login'] = $resultat['login'];
+    $_SESSION['solde'] = $resultat['solde'];
+    header( "Location:../front/index.php" );
 }else{
     echo ("une erreur est survenue");
 }
