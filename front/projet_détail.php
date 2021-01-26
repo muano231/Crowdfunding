@@ -6,16 +6,17 @@ include_once("../include/connexionbdd.php");
 $nom_projet = $_GET['nom_projet'];
 $element_affichage = "detail_projet";
 
-$result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet AS description_projet, p.date_butoir AS date_butoir, p.objectif AS objectif, p.id AS project_id, u.id AS utilisateur_id
-                FROM projet p
-                JOIN don d ON p.id = d.projet_id
-                JOIN utilisateur u ON p.utilisateur_id = u.id
-                WHERE p.nom_projet = :nom_projet
-                GROUP BY p.id");
+$result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet AS description_projet, p.date_butoir AS date_butoir, p.objectif AS objectif, p.id AS project_id, 
+        u.id AS utilisateur_id, SUM(d.montant) AS montant
+        FROM projet p
+        LEFT JOIN don d ON p.id = d.projet_id
+        JOIN utilisateur u ON p.utilisateur_id = u.id
+        WHERE p.nom_projet = :nom_projet
+        GROUP BY p.id");
 $result->execute(array('nom_projet' => $nom_projet));
 $lignes = $result->fetch();
-//$montant = $lignes['montant'];
-$montant = 100;
+$montant = $lignes['montant'];
+
 $pourcentage = ($montant/$lignes['objectif'])*100;
 ?>
 
@@ -24,6 +25,7 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
     <div class="card-body">
         <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
         <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
+        <p class="card-text">Objectif : <?php echo$montant."/".($lignes['objectif']); ?></p>
         <p class="card-text"> DATE BUTOIR : <?php echo($lignes['date_butoir']); ?></p>
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" 
@@ -32,6 +34,9 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
         <br>
         <?php
         if(!isset($_SESSION["id"])) {
+          $value = "../front/projet_detail.php?nom_projet=".$nom_projet;
+          setcookie ( "clicker" , "../front/index.php" , time()+3600 );
+          //setcookie ( "clicker" , $value , time()+3600 );
           echo "<a href='../front/connexion.php' class='btn btn-primary'>Connectez-Vous pour Donner</a>";
         }else{
           echo "<a href='../front/espace_don.php?projet= ". $lignes['project_id']. "' class='btn btn-primary'>Faire Un Don</a>";
