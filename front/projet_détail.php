@@ -17,6 +17,7 @@ $result->execute(array('nom_projet' => $nom_projet));
 $lignes = $result->fetch();
 $montant = $lignes['montant'];
 $project_id = $lignes['project_id'];
+$date_butoir_testif = $lignes['date_butoir'];
 $date_butoir = explode( " ", $lignes['date_butoir']);
 list ($year, $month, $day) = explode("-", $date_butoir[0]);
 $date_actuelle = date("Y-m-d H:i:s");
@@ -41,9 +42,13 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
           $GLOBALS['link'] = $value;
           echo "<a href='../front/connexion.php' class='btn btn-primary'>Connectez-Vous pour Donner</a>";
         
+        }elseif($_SESSION["id"]== $lignes['utilisateur_id']){
+
+          echo "<a class='btn btn-primary bg-warning'>Impossible de donner sur votre projet</a>";
+          exit;
         
-        
-        }elseif($date_butoir <= $date_actuelle){ ?>
+
+        }elseif($date_butoir_testif <= $date_actuelle){ ?>
           <div class="progress">
             <div class="progress-bar progress-bar-striped bg-danger " role="progressbar"  aria-valuemin="0" 
                 aria-valuemax="100" style="width: <?php echo($pourcentage); ?>%"><?php echo($pourcentage); ?>%</div>
@@ -51,13 +56,10 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
           <br>
 
           <?php echo "<a class='btn btn-primary bg-danger'>Date butoir du projet atteinte</a>";
-       
-       
-       
-        }elseif($_SESSION["id"]== $lignes['utilisateur_id']){
+          exit;
 
-          echo "<a class='btn btn-primary bg-warning'>Impossible de donner sur votre projet</a>";
-        
+
+
         
         
         
@@ -69,7 +71,7 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
           <br>
 
            <?php echo "<a href='../front/espace_don.php?projet= ". $project_id. "' class='btn btn-primary bg-success'>Objectif atteint, continuer de donner</a>";
-        
+        exit;
         }else{ ?>
           <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" 
