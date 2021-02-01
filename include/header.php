@@ -34,6 +34,7 @@ session_start();
                     <?php 
                     //Vérification de la session
                     if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
+                        
                         //Header seulement visible lorsque l'on est connecté
                         ?> 
                         <li class="nav-item dropdown">
@@ -78,9 +79,7 @@ session_start();
                             <a class="nav-link" href="../front/connexion.php">Connexion</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link">Cookie : <?php echo $GLOBALS['link'] ?>€</a>
-                        </li>
+                        
                         <?php 
                     
                     };

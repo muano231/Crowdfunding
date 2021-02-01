@@ -11,6 +11,7 @@ $result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id = :id ORDER B
 $result->execute(array('id' => $id));
 //$nb_lignes = $stmt2->fetch();
 
+if ($lignes = $result->fetch()){
 while($lignes = $result->fetch()){
     ?>
     <div class="card mb-3" style="max-width: 1010px;margin-left:150px;margin-top:50px;">
@@ -61,6 +62,12 @@ while($lignes = $result->fetch()){
     </div>
     <?php
 }
+}else{ ?>
+    <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5">
+    <h1>Vous n'avez pas de projets</h1>
+    <h2>Mais cela ne serait tarder hehe</h2>
+    </div>
+<?php }   
 
 
 ?>
