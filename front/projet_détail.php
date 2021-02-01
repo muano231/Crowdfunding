@@ -40,8 +40,7 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
         <?php
         if(!isset($_SESSION["id"])) {
           $value = "../front/projet_detail.php?nom_projet=".$nom_projet;
-          //setcookie ( "clicker" , "../front/index.php" , time()+3600 );
-          setcookie ( "clicker" , $value , time()+3600 );
+          $GLOBALS['link'] = $value;
           echo "<a href='../front/connexion.php' class='btn btn-primary'>Connectez-Vous pour Donner</a>";
         }elseif($date_butoir <= $date_actuelle){
           echo "<a class='btn btn-primary'>Date butoir du projet atteinte</a>";

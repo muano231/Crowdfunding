@@ -26,18 +26,16 @@ if ($resultat && $isPasswordCorrect){
     $_SESSION['id'] = $resultat['id'];
     $_SESSION['login'] = $login;
     $_SESSION['solde'] = $resultat['solde'];
-    if (isset($_COOKIE['clicker'])){
-        $location = $_COOKIE['clicker'];
-        setcookie ( "clicker" , "" , time()-3600 );
+    if (isset($GLOBALS['link'])){
+        $location = $GLOBALS['link'];
         header( "Location:".$location );
     }
     /*
     if (isset($_SERVER['HTTP_REFERER'])){
         
         header( "Location:".$_SERVER['HTTP_REFERER'] );
-    }
-    //header( "Location:../front/index.php" );*/
-    else{var_dump($_COOKIE);}
+    }*/
+    header( "Location:../front/index.php" );
 }else{
     echo '<p class="mb-0">Mauvais identifiant ou mdp ! <a href="../front/connexion.php" class="alert-link">Retouner sur la page de connexion</a>.</p>';
 }

@@ -79,7 +79,7 @@ session_start();
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link">Cookie : <?php echo $_COOKIE['clicker'] ?>€</a>
+                            <a class="nav-link">Cookie : <?php echo $GLOBALS['link'] ?>€</a>
                         </li>
                         <?php 
                     
