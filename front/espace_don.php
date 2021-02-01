@@ -6,8 +6,10 @@ include_once('../include/connexionbdd.php');
 if(!isset($_SESSION["id"])) {
     header("Location:connexion.php");
 }
+//$id_projet = trim($_GET['projet']);
 $id_projet = $_GET['projet'];
-
+var_dump($id_projet);
+echo $_SESSION['id'];
 $req = $pdo->prepare("SELECT * FROM projet WHERE id = :id");
 $req->execute(array(
     'id' => $id_projet));

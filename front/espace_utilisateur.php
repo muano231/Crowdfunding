@@ -36,11 +36,23 @@ $resultat = $stmt->fetch();
                     <label class="form-label" for="email">Email :</label>
                     <input class="form-control" type="email" name="email" id="email"
                         value="<?php echo($resultat['email']); ?>" required />
-
-                    <label class="form-label" for="password">Mot de passe :</label>
-                    <input class="form-control" type="text" name="password" id="password" required />
                     <br>
-                    <input class="btn btn-primary" type="submit" value="Modifier" />
+                    <input class="btn btn-primary" type="submit" value="Mettre à jour mes informations" />
+                </form>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Modifier mon mot de passe</h5>
+                <form action="../back/espace_utilisateur_update_password.php" method="post">
+                    <label class="form-label" for="old_password">Mot de passe actuel :</label>
+                    <input class="form-control" type="password" name="old_password" id="old_password" required />
+
+                    <label class="form-label" for="new_password">Nouveau mot de passe :</label>
+                    <input class="form-control" type="password" name="new_password" id="new_password" required />
+
+                    <label class="form-label" for="new_password_conf">Confirmation du mot de passe :</label>
+                    <input class="form-control" type="password" name="new_password_conf" id="new_password_conf" required />
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Mettre à jour mon mot de passe" />
                 </form>
             </div>
         </div>
