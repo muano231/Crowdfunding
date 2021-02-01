@@ -17,7 +17,8 @@ $result->execute(array('nom_projet' => $nom_projet));
 $lignes = $result->fetch();
 $montant = $lignes['montant'];
 $project_id = $lignes['project_id'];
-$date_butoir = $lignes['date_butoir'];
+$date_butoir = explode( " ", $lignes['date_butoir']);
+list ($year, $month, $day) = explode("-", $date_butoir[0]);
 $date_actuelle = date("Y-m-d H:i:s");
 if (!isset($montant)){
   $montant = 0;
@@ -25,13 +26,13 @@ if (!isset($montant)){
 $pourcentage = ($montant/$lignes['objectif'])*100;
 ?>
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 19rem;">
     <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title"><?php echo($lignes['nom_projet']); ?></h5>
         <p class="card-text"><?php echo($lignes['description_projet']); ?></p>
         <p class="card-text">Objectif : <?php echo$montant."/".($lignes['objectif']); ?></p>
-        <p class="card-text">Date Butoire  : <?php echo ($date_butoir); ?></p>
+        <p class="card-text">Date Butoire  : <?php echo ($day."/".$month."/".$year." à ".$date_butoir[1]); ?></p>
         
         
         <?php 

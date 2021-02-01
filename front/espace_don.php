@@ -6,10 +6,8 @@ include_once('../include/connexionbdd.php');
 if(!isset($_SESSION["id"])) {
     header("Location:connexion.php");
 }
-//$id_projet = trim($_GET['projet']);
-$id_projet = $_GET['projet'];
-var_dump($id_projet);
-echo $_SESSION['id'];
+$id_projet = trim($_GET['projet']);
+
 $req = $pdo->prepare("SELECT * FROM projet WHERE id = :id");
 $req->execute(array(
     'id' => $id_projet));
@@ -34,6 +32,7 @@ $infos = $req->fetch();
                     <input class="form-control" type="hidden" name="projet_id" id="projet_id"
                             value="<?php echo $id_projet; ?>"/>
                     <br>
+                    
                     <input class="btn btn-primary" type="submit" value="Faire le don" />
                 </form>
             </div>
