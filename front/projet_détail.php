@@ -40,17 +40,17 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
         <?php
         if(!isset($_SESSION["id"])) {
           $value = "../front/projet_detail.php?nom_projet=".$nom_projet;
-          setcookie ( "clicker" , "../front/index.php" , time()+3600 );
-          //setcookie ( "clicker" , $value , time()+3600 );
+          //setcookie ( "clicker" , "../front/index.php" , time()+3600 );
+          setcookie ( "clicker" , $value , time()+3600 );
           echo "<a href='../front/connexion.php' class='btn btn-primary'>Connectez-Vous pour Donner</a>";
         }elseif($date_butoir <= $date_actuelle){
           echo "<a class='btn btn-primary'>Date butoir du projet atteinte</a>";
         }elseif($_SESSION["id"]== $lignes['utilisateur_id']){
           echo "<a class='btn btn-primary'>Impossible de donner sur votre projet</a>";
         }elseif($pourcentage >= 100){
-          echo "<a href='../front/espace_don.php?projet= ". $nom_projet. "' class='btn btn-primary'>Objectif atteint, continuer de donner</a>";
+          echo "<a href='../front/espace_don.php?projet= ". $project_id. "' class='btn btn-primary'>Objectif atteint, continuer de donner</a>";
         }else{
-          echo "<a href='../front/espace_don.php?projet= ". $nom_projet. "' class='btn btn-primary'>Faire Un Don</a>";
+          echo "<a href='../front/espace_don.php?projet= ". $project_id. "' class='btn btn-primary'>Faire Un Don</a>";
         }
         ?>
     </div>
