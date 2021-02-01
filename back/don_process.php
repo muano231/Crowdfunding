@@ -33,5 +33,7 @@ if($stmt->execute(array(
     header( "Location:../front/confirmation_donation.php?projet=".$projet_id );
     //header( "Location:../front/espace_don.php?projet=".$projet_id );
 }else{
-    echo ("une erreur est survenue");
+    echo("Vous avez déjà fais un don pour ce projet. Vous ne pouvez plus en faire. Vous allez être rediriger sur la page des projets.");
+    header('Refresh: 2; url=../front/index.php');
+
 }
