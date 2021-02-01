@@ -20,7 +20,7 @@ include_once("../include/header.php");
 
     <?php 
 
-$result = $pdo->prepare("SELECT * FROM projet ORDER BY date_butoir ASC"); //WHERE DATEDIFF( date_butoir, DATE( NOW() ) )>=0 
+$result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC"); 
 $result->execute(array());
 
 while($lignes = $result->fetch()){

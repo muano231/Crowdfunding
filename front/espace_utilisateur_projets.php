@@ -44,6 +44,11 @@ while($lignes = $result->fetch()){
                     <input class="btn btn-primary" type="submit" value="Modifier" />
                 </form>
                 <br/>
+
+                <a href="projet_détail.php?nom_projet=<?php echo $lignes['nom_projet']; ?>" title="Envoyer"><input class="btn btn-primary" type="submit" value="Voir son projet" /></a>
+                <br>
+                <br>
+
                 <form action="confirmation_suppression.php" method="post">
                     <input class="form-control" type="hidden" name="id" id="id"
                         value="<?php echo($lignes['id']); ?>" />
