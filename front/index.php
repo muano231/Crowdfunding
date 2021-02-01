@@ -11,17 +11,21 @@ include_once("../include/header.php");
 
     <?php 
         if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
+            $result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC"); 
+            $result->execute(array());
         }else{
             ?>
     <a class="btn btn-primary" href="connexion.php">Se connecter</a>
+    
     <?php
+    $result = $pdo->prepare("SELECT * FROM projet ORDER BY date_butoir DESC"); 
+    $result->execute(array());
         }    
             ?>
 
     <?php 
 
-$result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC"); 
-$result->execute(array());
+
 
 while($lignes = $result->fetch()){
     $nom_projet = $lignes['nom_projet'];
