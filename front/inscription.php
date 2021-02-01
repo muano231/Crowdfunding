@@ -34,6 +34,11 @@ include_once("../include/header.php");
                 <input class="form-control" type="password" name="password" id="password" value="" required />
             </div>
 
+            <div>
+                <label class="form-label" for="password">Confirmer le mot de passe :</label>
+                <input class="form-control" type="password" name="password_conf" id="password_conf" value="" required />
+            </div>
+
             <input class="btn btn-primary" type="submit" value="Inscription" />
         </div>
     </form>
