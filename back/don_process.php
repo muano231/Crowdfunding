@@ -30,8 +30,11 @@ if($stmt->execute(array(
         'solde'=> $_SESSION['solde'],
         'id_utilisateur'=> $id_utilisateur
     ));
-    header( "Location:../front/confirmation_don.php?projet=".$projet_id );
+    header( "Location:../front/confirmation_donation.php?projet=".$projet_id );
     //header( "Location:../front/espace_don.php?projet=".$projet_id );
 }else{
+    var_dump($id_utilisateur);
+    var_dump($projet_id);
+    var_dump($montant);
     echo ("une erreur est survenue");
 }
