@@ -30,7 +30,7 @@ $infos = $req->fetch();
                     <label class="form-label" for="montant">Donner :</label>
                     <input class="form-control" type="text" name="montant" id="montant" required/>
                     <input class="form-control" type="hidden" name="projet_id" id="projet_id"
-                            value="<?php echo $id; ?>"/>
+                            value="<?php echo $id_projet; ?>"/>
                     <br>
                     <input class="btn btn-primary" type="submit" value="Faire le don" />
                 </form>
