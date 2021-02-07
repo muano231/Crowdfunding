@@ -26,12 +26,18 @@ switch ($affichage){
     <h2>Voici tout les projets en cours </h2>
 
     <div class="d-flex text-center" style="padding-left: 40px;" >
-        <form action=""></form>
-        <input class="btn btn-primary border" type="button" name="tout" id="" value="Tout les projets">
-        <form action=""></form>
-        <input class="btn btn-primary border" type="button" name="termine" id="" value="Les projets terminés">
-        <form action=""></form>
-        <input class="btn btn-primary border" type="button" name="depasse" id="" value="Les projets dépassés">
+        <form action="">
+            <input  type="hidden" name="tout" id="" value="">
+            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Tous les projets">
+        </form>
+        <form action="">
+            <input  type="hidden" name="termine" id="" value="termine">
+            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les porjets terminés">
+        </form>
+        <form action="">
+            <input type="hidden" name="depasse" id="" value="depasse">
+            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les projets dépassé">
+        </form>
     </div>
     <br>
 
