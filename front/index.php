@@ -26,15 +26,15 @@ switch ($affichage){
     <h2>Voici tout les projets en cours </h2>
 
     <div class="d-flex text-center" style="padding-left: 40px;" >
-        <form action="">
+        <form action="index.php=affichage=tout">
             <input  type="hidden" name="tout" id="" value="">
             <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Tous les projets">
         </form>
-        <form action="">
+        <form action="index.php=affichage=termine">
             <input  type="hidden" name="termine" id="" value="termine">
             <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les projets terminés">
         </form>
-        <form action="">
+        <form action="index.php=affichage=depasse">
             <input type="hidden" name="depasse" id="" value="depasse">
             <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les projets dépassé">
         </form>
