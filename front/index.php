@@ -1,7 +1,8 @@
 <?php 
 include_once("../include/connexionbdd.php");
 include_once("../include/header.php");
-$affichage = $_GET['affichage'];
+//$affichage = $_GET['affichage'];
+$affichage = "";
 
 //Affichage des projets en fonction de l'objectif du projet
 switch ($affichage){

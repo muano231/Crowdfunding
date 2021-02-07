@@ -50,6 +50,10 @@ session_start();
                             <a class="nav-link" href="../front/projet_creation.php">Créer Un Projet</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="../front/recharger_solde.php">Recharger son solde</a>
+                        </li>
+
                         <?php
                         //Récupération du solde
                         include_once('connexionbdd.php');
