@@ -24,21 +24,23 @@ switch ($affichage){
 <div class="titre shadow-lg p-3 mb-5 bg-white rounded border border-5">
     <h1>Bienvenue sur le meilleur site de crowdfunding de la terre</h1>
     <h2>Voici tout les projets en cours </h2>
-
+<!-----
     <div class="d-flex text-center" style="padding-left: 40px;" >
-        <form action="index.php=affichage=tout">
+        <div>
             <input  type="hidden" name="tout" id="" value="">
-            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Tous les projets">
-        </form>
-        <form action="index.php=affichage=termine">
+            <a href="../front/index.php?affiche=tout" title="Envoyer"><input class="btn btn-primary" type="submit" value="Plus de détails" /></a>
+        </div>
+        <div>
             <input  type="hidden" name="termine" id="" value="termine">
-            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les projets terminés">
-        </form>
-        <form action="index.php=affichage=depasse">
+            <a href="../front/index.php?affiche=termine" title="Envoyer"><input class="btn btn-primary" type="submit" value="Plus de détails" /></a>
+        </div>
+        <div>
             <input type="hidden" name="depasse" id="" value="depasse">
-            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les projets dépassé">
-        </form>
+            <a href="../front/index.php?affiche=depasse" title="Envoyer"><input class="btn btn-primary" type="submit" value="Plus de détails" /></a>
+
+        </div>
     </div>
+------>
     <br>
 
 
