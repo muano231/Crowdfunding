@@ -32,7 +32,7 @@ switch ($affichage){
         </form>
         <form action="">
             <input  type="hidden" name="termine" id="" value="termine">
-            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les porjets terminés">
+            <input class="btn btn-primary border" style="margin: 2px;" type="submit" value="Les projets terminés">
         </form>
         <form action="">
             <input type="hidden" name="depasse" id="" value="depasse">
