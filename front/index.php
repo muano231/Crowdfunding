@@ -27,11 +27,11 @@ switch ($affichage){
 
     <div class="d-flex text-center" style="padding-left: 40px;" >
         <form action=""></form>
-        <input type="button" name="tout" id="" value="Tout les projets">
+        <input class="btn btn-primary border" type="button" name="tout" id="" value="Tout les projets">
         <form action=""></form>
-        <input type="button" name="termine" id="" value="Les projets terminés">
+        <input class="btn btn-primary border" type="button" name="termine" id="" value="Les projets terminés">
         <form action=""></form>
-        <input type="button" name="depasse" id="" value="Les projets dépassés">
+        <input class="btn btn-primary border" type="button" name="depasse" id="" value="Les projets dépassés">
     </div>
     <br>
 
