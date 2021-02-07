@@ -25,6 +25,17 @@ switch ($affichage){
     <h1>Bienvenue sur le meilleur site de crowdfunding de la terre</h1>
     <h2>Voici tout les projets en cours </h2>
 
+    <div class="d-flex text-center" style="padding-left: 40px;" >
+        <form action=""></form>
+        <input type="button" name="tout" id="" value="Tout les projets">
+        <form action=""></form>
+        <input type="button" name="termine" id="" value="Les projets terminés">
+        <form action=""></form>
+        <input type="button" name="depasse" id="" value="Les projets dépassés">
+    </div>
+    <br>
+
+
     <?php 
         if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
             $result = $pdo->prepare($req); 
