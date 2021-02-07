@@ -66,14 +66,9 @@ foreach($lignes as $ligne){
     <h1>Vous n'avez pas de projets</h1>
     <h2>Mais cela ne serait tarder hehe</h2>
     </div>
-<?php }   
+<?php }   ?>
 
 
-?>
-
-
-
-<?php
-
+<?php include_once("../include/footer.php"); ?> 
 
 

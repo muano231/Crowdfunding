@@ -15,7 +15,7 @@ $description = $_POST['projet_description'];
 $id_projet = $_POST['projet_id'];
 
 
-// Requête préparé avec les paramètres nommés
+// Mise à jour des informations du projet
 $stmt = $pdo->prepare("UPDATE projet  SET nom_projet = :nom, description_projet = :description  WHERE id = :id AND utilisateur_id = :id_utilisateur ");
 $stmt->execute(array(
     'nom'=> $nom,

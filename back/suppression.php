@@ -4,6 +4,7 @@ include_once('../include/connexionbdd.php');
 $projet_id = $_POST['id'];
 $utilisateur_id = $_POST['utilisateur_id'];
 
+//Suppression du projet en fonction des paramètre attribués
 $stmt = $pdo->prepare("DELETE FROM projet WHERE id = :projet_id AND utilisateur_id = :utilisateur_id");
 $stmt->execute(array(
     'projet_id' => $projet_id,

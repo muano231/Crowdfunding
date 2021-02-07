@@ -3,6 +3,7 @@ include_once("../include/connexionbdd.php");
 include_once("../include/header.php");
 $affichage = $_GET['affichage'];
 
+//Affichage des projets en fonction de l'objectif du projet
 switch ($affichage){
     case "depasse" :
         $req = "SELECT * FROM projet WHERE AND date_butoir < NOW() utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC";
@@ -41,7 +42,7 @@ switch ($affichage){
     <?php 
 
 
-
+//Affichage des projets
 while($lignes = $result->fetch()){
     $nom_projet = $lignes['nom_projet'];
     ?>

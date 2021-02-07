@@ -6,6 +6,7 @@ include_once("../include/connexionbdd.php");
 $nom_projet = $_GET['nom_projet'];
 $element_affichage = "detail_projet";
 
+//Récupération de toute les informations liées au nom du projet   
 $result = $pdo->prepare("SELECT p.nom_projet AS nom_projet, p.description_projet AS description_projet, p.date_butoir AS date_butoir, p.objectif AS objectif, p.id AS project_id, 
         u.id AS utilisateur_id, SUM(d.montant) AS montant
         FROM projet p
@@ -21,6 +22,8 @@ $date_butoir_testif = $lignes['date_butoir'];
 $date_butoir = explode( " ", $lignes['date_butoir']);
 list ($year, $month, $day) = explode("-", $date_butoir[0]);
 $date_actuelle = date("Y-m-d H:i:s");
+
+//Exploitation de toute les données récupérées avec la requête
 if (!isset($montant)){
   $montant = 0;
 }
@@ -57,12 +60,8 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
 
           <?php echo "<a class='btn btn-primary bg-danger'>Date butoir du projet atteinte</a>";
           exit;
-
-
-
         
-        
-        
+
         }elseif($pourcentage >= 100){ ?>
           <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success " role="progressbar"  aria-valuemin="0" 
@@ -72,6 +71,8 @@ $pourcentage = ($montant/$lignes['objectif'])*100;
 
            <?php echo "<a href='../front/espace_don.php?projet= ". $project_id. "' class='btn btn-primary bg-success'>Objectif atteint, continuer de donner</a>";
         exit;
+
+        
         }else{ ?>
           <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" 

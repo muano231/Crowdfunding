@@ -6,6 +6,7 @@ $projet_id = $_POST['projet_id'];
 $id_utilisateur = $_SESSION['id'];
 $solde = $_SESSION['solde'];
 
+//Vérification des champs remplis et que le solde soit suffisant pour faire un don
 if ($montant == 0 && isset($projet_id)){
     echo "Il faut entrer un montant pour effectuer un don "."<a href='../front/espace_don.php?projet=".$projet_id."'>Retourner à la page donnation du produit.</a>";
     exit;
@@ -14,8 +15,7 @@ if ($montant == 0 && isset($projet_id)){
     exit;
 }
 
-//echo $id_utilisateur.$projet_id.$montant;
-
+// Ajout du don dans la base de donnée
 $stmt = $pdo->prepare("INSERT INTO don (utilisateur_id, projet_id, montant, date_don)
                     VALUES (:utilisateur_id, :projet_id, :montant, NOW())");
 
@@ -31,7 +31,7 @@ if($stmt->execute(array(
         'id_utilisateur'=> $id_utilisateur
     ));
     header( "Location:../front/confirmation_donation.php?projet=".$projet_id );
-    //header( "Location:../front/espace_don.php?projet=".$projet_id );
+   
 }else{
     echo("Vous avez déjà fais un don pour ce projet. Vous ne pouvez plus en faire. Vous allez être rediriger sur la page des projets.");
     header('Refresh: 2; url=../front/index.php');

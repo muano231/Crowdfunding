@@ -8,7 +8,7 @@ if(!isset($_SESSION["id"])) {
 }
 $id_projet = trim($_GET['projet']);
 
-
+// Récupération du solde de l'utilisateur
 $verif = $pdo->prepare("SELECT solde FROM utilisateur WHERE id =:id");
 $verif->execute(array(
     'id' => $_SESSION['id']
@@ -16,7 +16,7 @@ $verif->execute(array(
 $verifsolde = $verif->fetch(); 
 
 
-
+//Récupération des informations du projet
 $req = $pdo->prepare("SELECT * FROM projet WHERE id = :id");
 $req->execute(array(
     'id' => $id_projet));
@@ -54,3 +54,6 @@ $infos = $req->fetch();
         </div>
     </div>
 </div>
+
+
+<?php include_once("../include/footer.php"); ?> 
