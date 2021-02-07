@@ -4,6 +4,7 @@ include_once('../include/connexionbdd.php');
 $projet_id = $_POST['id'];
 $utilisateur_id = $_SESSION['id'];
 
+//Récupération du nom du projet en fonction de l'id du projet
 $req = $pdo->prepare("SELECT DISTINCT nom_projet FROM projet WHERE id = :id");
 $req->execute(array(
     'id' => $projet_id));

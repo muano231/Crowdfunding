@@ -20,7 +20,7 @@ if($hash_mdp == $resultat['mot_de_passe']){
 }
 
 
-//Vérification des identifiants de connexion 
+//Vérification des identifiants de connexion
 if ($resultat && $isPasswordCorrect){
     session_start();
     $_SESSION['id'] = $resultat['id'];
