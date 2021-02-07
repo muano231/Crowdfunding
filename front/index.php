@@ -1,7 +1,22 @@
 <?php 
 include_once("../include/connexionbdd.php");
 include_once("../include/header.php");
+$affichage = $_GET['affichage'];
 
+switch ($affichage){
+    case "depasse" :
+        $req = "SELECT * FROM projet WHERE AND date_butoir < NOW() utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC";
+        $req2 = "SELECT * FROM projet WHERE date_butoir < NOW() ORDER BY date_butoir DESC";
+        break;
+    case "termine" :
+        $req = "SELECT * FROM projet WHERE utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC";
+        $req2 = "SELECT * FROM projet WHERE  ORDER BY date_butoir DESC";
+        break;
+    default :
+        $req = "SELECT * FROM projet WHERE utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC";
+        $req2 = "SELECT * FROM projet ORDER BY date_butoir DESC";
+        break;
+}
 
 ?>
 
@@ -11,14 +26,14 @@ include_once("../include/header.php");
 
     <?php 
         if(isset($_SESSION['id']) AND isset($_SESSION['login'])){
-            $result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id != $_SESSION[id] ORDER BY date_butoir DESC"); 
+            $result = $pdo->prepare($req); 
             $result->execute(array());
         }else{
             ?>
     <a class="btn btn-primary" href="connexion.php">Se connecter</a>
     
     <?php
-    $result = $pdo->prepare("SELECT * FROM projet ORDER BY date_butoir DESC"); 
+    $result = $pdo->prepare($req2); 
     $result->execute(array());
         }    
             ?>
