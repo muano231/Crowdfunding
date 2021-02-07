@@ -9,7 +9,6 @@ $id = $_SESSION['id'];
 // récupération des projets de l'utilisateur connecté
 $result = $pdo->prepare("SELECT * FROM projet WHERE utilisateur_id = :id ORDER BY date_butoir ASC");
 $result->execute(array('id' => $id));
-//$nb_lignes = $stmt2->fetch();
 
 if ($lignes = $result->fetchAll()){
 foreach($lignes as $ligne){

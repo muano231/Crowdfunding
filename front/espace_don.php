@@ -8,10 +8,20 @@ if(!isset($_SESSION["id"])) {
 }
 $id_projet = trim($_GET['projet']);
 
+
+$verif = $pdo->prepare("SELECT solde FROM utilisateur WHERE id =:id");
+$verif->execute(array(
+    'id' => $_SESSION['id']
+));
+$verifsolde = $verif->fetch(); 
+
+
+
 $req = $pdo->prepare("SELECT * FROM projet WHERE id = :id");
 $req->execute(array(
     'id' => $id_projet));
 $infos = $req->fetch();
+
 
 ?>
 <div class="card mb-3" style="max-width: 1010px;margin-left:150px;margin-top:50px;">
@@ -32,8 +42,13 @@ $infos = $req->fetch();
                     <input class="form-control" type="hidden" name="projet_id" id="projet_id"
                             value="<?php echo $id_projet; ?>"/>
                     <br>
-                    
+                <?php  if($verifsolde['solde'] == 0 ){ ?>
+                    <p>Votre solde est actuellement à 0. N'hésitez pas à </p><a href="/recharger_solde.php">recharger votre compte !</a>
+
+
+              <?php   }else{  ?>
                     <input class="btn btn-primary" type="submit" value="Faire le don" />
+                <?php }?>    
                 </form>
             </div>
         </div>
